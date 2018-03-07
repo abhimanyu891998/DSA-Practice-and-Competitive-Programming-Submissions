@@ -20,12 +20,7 @@ int main()
 
 	sort(v.begin(),v.end());
 
-	for(int i=0 ; i<n ; i++)
-	{
-		cout<<v[i]<<" ";
-
-	}
-	cout<<endl;
+	
 
 	int c=0; int a=0;
 	
@@ -40,7 +35,7 @@ int main()
 
 		else if(v[i]<v[i-1])
 		{
-			a = (v[i]-v[i-1]);
+			a = (v[i-1]-v[i]);
 			v[i]+=a;
 			c+=a;
 			v[i]++;
