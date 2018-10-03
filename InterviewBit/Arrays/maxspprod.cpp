@@ -1,67 +1,69 @@
 //https://www.interviewbit.com/problems/maxspprod/
-vector<int> Solution::maxset(vector<int> &A) {
+int Solution::maxSpecialProduct(vector<int> &A) {
     
-    long int currentSum=0;
-    long int maxSum =0;
-    vector<int> maxSumSubArray;
-    vector<int> currentSumSubArray;
-    for(int i=0 ; i<A.size() ; i++)
-    {  
+    int n = A.size();
+    
+    
+    vector<long long> l(n,0),r(n,0);
+    stack<long long> s;
+    for(long long i= 0;i<n;i++){
         
-       if((max(currentSum, currentSum+A[i]) == currentSum) && (currentSum!= currentSum+A[i]))
-       {   
-          if(currentSum==maxSum)
-          {
-              maxSum = currentSum;
-              maxSumSubArray.clear();
-              for(int j=0 ; j<currentSumSubArray.size() ; j++)
-              {
-                  maxSumSubArray.push_back(currentSumSubArray[j]);
-              }
-              
-          }
-          
-         currentSumSubArray.clear();
-         
-          currentSum=0;
-           
-           
-       }
-       
-       else
-       {   
-           
-            currentSum+= A[i];
-           currentSumSubArray.push_back(A[i]);
-           
-           if(maxSum<=currentSum)
-           {  
-               maxSum=currentSum;
-           }
-       }
-       
+        if(s.empty()){
+            s.push(i);
+        }else{
+            
+            while(!s.empty() && A[s.top()] <= A[i]){
+                s.pop();
+            }
+            
+            if(!s.empty()){
+                l[i] = s.top();
+                
+            }
+            
+            s.push(i);
+            
+         }
+    }
+    while(!s.empty()){
+    s.pop();
     }
     
-    if(currentSum == maxSum)
-    {
-        if(currentSumSubArray.size() >= maxSumSubArray.size())
-          {
-              maxSum = currentSum;
-              maxSumSubArray.clear();
-              for(int j=0 ; j<currentSumSubArray.size() ; j++)
-              {
-                  maxSumSubArray.push_back(currentSumSubArray[j]);
-              }
-              
-          }
+     for(long long i= n-1;i>=0;i--){
+        
+        if(s.empty()){
+            s.push(i);
+        }else{
+            
+            while(!s.empty() && A[s.top()] <= A[i]){
+                s.pop();
+            }
+            
+            if(!s.empty()){
+                r[i] = s.top();
+                
+            }
+            s.push(i);
+         }
         
     }
     
-    //int maxSubArraySize = maxSumSubArray.size();
-    //maxSumSubArray.insert(maxSumSubArray.begin(),maxSubArraySize);
+    long long maxx = 0;
+    long long mod = 1000000007;
+    for(int i =0;i<n;i++){
+        //cout << l[i] << " " << r[i] << endl;
+        long long val = (l[i]*r[i]*1LL); 
+        maxx= max(val,maxx);
+        
+        
+        
+    }
     
-    return maxSumSubArray;
+    
+    return maxx%mod;
     
     
-     
+    
+    
+    
 }
