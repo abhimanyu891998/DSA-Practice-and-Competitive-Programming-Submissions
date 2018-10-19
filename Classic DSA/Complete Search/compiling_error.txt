@@ -1,0 +1,11 @@
+/Users/abhimanyuetanwar/Desktop/DSA Practice/Classic Algos/Complete Search/generating_permutations.cpp:14:20: error: reference to non-static member function must be called; did you mean to call it with no arguments?
+    if(permutation.size == n)
+       ~~~~~~~~~~~~^~~~
+                       ()
+/Users/abhimanyuetanwar/Desktop/DSA Practice/Classic Algos/Complete Search/generating_permutations.cpp:17:13: warning: 'auto' type specifier is a C++11 extension [-Wc++11-extensions]
+        for(auto a: permutation)
+            ^
+/Users/abhimanyuetanwar/Desktop/DSA Practice/Classic Algos/Complete Search/generating_permutations.cpp:17:19: warning: range-based for loop is a C++11 extension [-Wc++11-extensions]
+        for(auto a: permutation)
+                  ^
+2 warnings and 1 error generated.

@@ -24,7 +24,7 @@ void gen_perms()
         return ;
 
     }
-    
+
     else{
     for(int i=0 ; i<n ; i++)
     {
@@ -43,7 +43,7 @@ void gen_perms()
 
 int main()
 {
-  
+
    cin>>n;
    for(int i=0 ; i<n ; i++)
    {

@@ -1,0 +1,7 @@
+/Users/abhimanyuetanwar/Desktop/DSA Practice/TwitterUChallenge2019/problem1.cpp:45:14: error: implicit instantiation of undefined template 'std::__1::basic_ofstream<char, std::__1::char_traits<char> >'
+    ofstream fout(getenv("OUTPUT_PATH"));
+             ^
+/Library/Developer/CommandLineTools/usr/include/c++/v1/iosfwd:133:32: note: template is declared here
+    class _LIBCPP_TEMPLATE_VIS basic_ofstream;
+                               ^
+1 error generated.

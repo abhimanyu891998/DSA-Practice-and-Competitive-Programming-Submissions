@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include<sstream>
 
 using namespace std;
 
@@ -9,33 +10,33 @@ string decode(string encoded) {
     string output = "";
     reverse(encoded.begin(),encoded.end());
     for(int i=0;i<encoded.length() ; i++)
-    {   
+    {
         string asciiInt = "";
         if(encoded[i]== '1')
-        {   
-        
+        {
+
             asciiInt += encoded[i];
             asciiInt += encoded[i+1];
             asciiInt += encoded[i+2];
             i+=2;
         }
-        
+
         else
         {
             asciiInt += encoded[i];
             asciiInt += encoded[i+1];
             i++;
         }
-       
+
         stringstream ss(asciiInt);
         int asciiInteger=0;
         ss>>asciiInteger;
-        
-       
+
+
         output+= (char)asciiInteger;
-        
+
     }
-    
+
     return output;
 
 }
