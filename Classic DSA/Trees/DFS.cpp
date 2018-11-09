@@ -18,12 +18,15 @@ void dfs(int i)
   {
     int next = s.top();
     s.pop();
-    cout<<next<<" ";
+    if(v[next]!=true)
+    {v[next]=true;
+    cout<<next<<" ";}
 
     for(int j=0; j<graph[next].size() ; j++)
     {
-      s.push(graph[next][j]);
-      v[graph[next][j]]=true;
+      if(v[next]==false)
+      {s.push(graph[next][j]);
+      }
     }
 
   }
