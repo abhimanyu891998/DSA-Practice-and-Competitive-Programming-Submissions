@@ -1,46 +1,70 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
 
+void merge(int arr[],int start,int mid, int end){
+int a[mid-start+1];
+int b[end-mid];
+for(int i= 0 ; i< (mid-start+1) ; i++){
+  a[i]= arr[start+i];
+}
+for(int j=0 ; j< (end-mid) ; j++){
+  b[j] = arr[mid+1+j];
+}
 
-void merge(int arr[], int l, int m , int r)
-{
-  int i,j,k;
-  int n1 = m-l + 1;
-  int n2 = r-m;
-  int L[n1], R[n2];
-  for(int i=0 ; i< n1 ; i++)
-  {
-    L[i] = arr[l+i];
+int i=0,j=0,k=start;
+while(i<(mid-start+1) && j<(end-mid)){
+  if(a[i]<= b[j]){
+    arr[k]=a[i];
+
+    i++;
   }
-
-  for(int j=0 ; j<n2 ; j++)
-  {
-    R[j] = arr[m+1+j];
+  else{
+    arr[k]=b[j];
+    j++;
   }
+  k++;
+}
 
+while(i< (mid-start+1)){
+  arr[k] = a[i];
   
+  i++;
+  k++;
+}
+
+while(j< (end-mid)){
+  arr[k] = b[j];
+  j++;
+  k++;
+}
+
+return;
 
 }
 
-void mergeSort(int arr , int l , int r)
-{
-  if(l<r)
-  {
-    int m = l + (r-1)/2;
+void mergeSort(int arr[], int start, int end){
+if(start<end){
+int mid = (start+end)/2;
+mergeSort(arr,start,mid);
+mergeSort(arr,mid+1,end);
+merge(arr,start,mid,end);
+}
 
-    mergeSort(arr,l,m);
-    mergeSort(arr,m+1,r);
-    merge(arr,l,m,r);
+}
+
+int main(){
+  int n;
+  cin>>n;
+  int arr[n];
+  for(int i=0; i<n ; i++){
+    cin>>arr[i];
   }
-}
 
-int main()
-{
-  int arr = {19,11,12,4,7,2};
-  int size = 6;
-  mergeSort(arr,0,5);
-  for(int i=0 ; i<6 ; i++)
-  {
+  mergeSort(arr,0,n-1);
+  for(int i=0 ; i<n ; i++){
     cout<<arr[i]<<" ";
   }
+
+  return 0;
+
 }
