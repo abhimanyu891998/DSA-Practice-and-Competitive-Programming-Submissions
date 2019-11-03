@@ -1,3 +1,5 @@
+// /https://www.interviewbit.com/problems/nqueens/
+
 #include<bits/stdc++.h>
 
 bool isValid(vector<string> &board, string &s, int row, int col, int n){
